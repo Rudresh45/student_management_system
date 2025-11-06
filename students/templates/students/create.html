@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Student{% endblock %}
+
+{% block content %}
+<h1>Add New Student</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<br>
+<a href="{% url 'students:student_list' %}">← Back to Student List</a>
+{% endblock %}

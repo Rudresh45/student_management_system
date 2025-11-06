@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+<h1>Edit Student - {{ student.first_name }} {{ student.last_name }}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+
+<br>
+<a href="{% url 'students:student_list' %}">← Back to Student List</a>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p>Total students: {{ total_students }}</p>
+<section class="form-section">
+<h2>Add Student</h2>
+<form method="post">{% csrf_token %}
+ {{ form.as_p }}
+<button type="submit">Add</button>
+</form>
+</section>
+<section>
+<h2>Latest</h2>
+<ul>
+ {% for s in latest_students %}
+<li>{{ s.first_name }} {{ s.last_name }} — {{ s.roll_number }}</li>
+ {% empty %}
+<li>No students yet.</li>
+ {% endfor %}
+</ul>
+</section>
+{% endblock %}
